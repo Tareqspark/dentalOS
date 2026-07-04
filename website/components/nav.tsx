@@ -9,13 +9,13 @@ import { ThemeToggle } from "./theme-toggle";
 import { Button } from "./ui/primitives";
 
 const links = [
-  { label: "Solutions", href: "#solutions" },
-  { label: "Features", href: "#features" },
-  { label: "AI", href: "#ai" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "Resources", href: "#faq" },
-  { label: "Testimonials", href: "#testimonials" },
-  { label: "Contact", href: "#contact" },
+  { label: "Solutions", href: "/#solutions" },
+  { label: "Features", href: "/features" },
+  { label: "AI", href: "/#ai" },
+  { label: "Pricing", href: "/#pricing" },
+  { label: "Resources", href: "/#faq" },
+  { label: "Testimonials", href: "/#testimonials" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export function Nav() {
@@ -36,7 +36,7 @@ export function Nav() {
       }`}
     >
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:px-8" aria-label="Main">
-        <Link href="#" aria-label="DentalOS home">
+        <Link href="/" aria-label="DentalOS home">
           <Logo />
         </Link>
 
@@ -54,7 +54,7 @@ export function Nav() {
 
         <div className="hidden items-center gap-3 lg:flex">
           <ThemeToggle />
-          <Button href="#contact" variant="ai">
+          <Button href="/#contact" variant="ai">
             Book Demo
           </Button>
         </div>
@@ -93,7 +93,7 @@ export function Nav() {
                 </Link>
               ))}
               <div className="pt-2">
-                <Button href="#contact" variant="ai" className="w-full">
+                <Button href="/#contact" variant="ai" className="w-full">
                   Book Demo
                 </Button>
               </div>

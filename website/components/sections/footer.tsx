@@ -3,22 +3,51 @@ import { Linkedin, Twitter, Youtube, Facebook } from "lucide-react";
 import { Container } from "../ui/primitives";
 import { Logo } from "../logo";
 
-const columns = [
+const columns: { title: string; links: { label: string; href: string }[] }[] = [
   {
     title: "Product",
-    links: ["AI Receptionist", "Scheduling", "Clinical Records", "Insurance", "Billing", "Analytics"],
+    links: [
+      { label: "All Features", href: "/features" },
+      { label: "AI Receptionist", href: "/features/ai-receptionist" },
+      { label: "Scheduling", href: "/features/smart-scheduling" },
+      { label: "Clinical Records", href: "/features/dental-records" },
+      { label: "Insurance", href: "/features/insurance-automation" },
+      { label: "Billing", href: "/features/billing-payments" },
+      { label: "Analytics", href: "/features/analytics-reports" },
+    ],
   },
   {
-    title: "Company",
-    links: ["About", "Careers", "Press", "Partners", "Contact"],
+    title: "Platform",
+    links: [
+      { label: "AI Clinical Notes", href: "/features/ai-clinical-notes" },
+      { label: "Patient Portal", href: "/features/patient-portal" },
+      { label: "Digital Imaging", href: "/features/digital-imaging" },
+      { label: "Marketing CRM", href: "/features/marketing-crm" },
+      { label: "Inventory", href: "/features/inventory" },
+      { label: "Mobile Apps", href: "/features/mobile-apps" },
+      { label: "Business Intelligence", href: "/features/business-intelligence" },
+    ],
   },
   {
     title: "Resources",
-    links: ["Blog", "Help Center", "Webinars", "API Docs", "Switching Guide"],
+    links: [
+      { label: "Pricing", href: "/#pricing" },
+      { label: "FAQ", href: "/#faq" },
+      { label: "Testimonials", href: "/#testimonials" },
+      { label: "Blog", href: "#" },
+      { label: "Help Center", href: "#" },
+      { label: "Switching Guide", href: "#" },
+    ],
   },
   {
-    title: "Support",
-    links: ["Live Chat", "System Status", "Training", "Community"],
+    title: "Company",
+    links: [
+      { label: "About", href: "#" },
+      { label: "Careers", href: "#" },
+      { label: "Partners", href: "#" },
+      { label: "Contact", href: "/#contact" },
+      { label: "System Status", href: "#" },
+    ],
   },
 ];
 
@@ -79,12 +108,12 @@ export function Footer() {
                 <h3 className="text-sm font-semibold">{col.title}</h3>
                 <ul className="mt-4 space-y-2.5">
                   {col.links.map((l) => (
-                    <li key={l}>
+                    <li key={l.label}>
                       <Link
-                        href="#"
+                        href={l.href}
                         className="text-sm text-[var(--ink-2)] transition-colors hover:text-[var(--ink)]"
                       >
-                        {l}
+                        {l.label}
                       </Link>
                     </li>
                   ))}

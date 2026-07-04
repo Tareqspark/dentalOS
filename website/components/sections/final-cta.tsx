@@ -31,7 +31,7 @@ export function FinalCTA() {
                   Book a Demo <ArrowRight size={17} />
                 </Button>
                 <Button
-                  href="#pricing"
+                  href="/#pricing"
                   size="lg"
                   className="!bg-white/10 !text-white !shadow-none ring-1 ring-white/30 hover:!bg-white/20"
                 >
