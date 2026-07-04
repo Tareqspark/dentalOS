@@ -1,4 +1,5 @@
-import { Plug } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, Plug } from "lucide-react";
 import { Badge, Container, SectionHeading } from "../ui/primitives";
 import { Reveal } from "../ui/reveal";
 import { integrations } from "@/lib/data";
@@ -35,19 +36,34 @@ export function IntegrationsSection() {
       </Container>
 
       <Reveal>
-        <div className="marquee-mask space-y-5">
-          <div className="flex w-max animate-marquee">
-            {[...rowA, ...rowA].map((it, i) => (
-              <LogoPill key={`${it.name}-${i}`} {...it} />
-            ))}
+        <Link href="/integrations" aria-label="View all integrations" className="block">
+          <div className="marquee-mask space-y-5">
+            <div className="flex w-max animate-marquee">
+              {[...rowA, ...rowA].map((it, i) => (
+                <LogoPill key={`${it.name}-${i}`} {...it} />
+              ))}
+            </div>
+            <div className="flex w-max animate-marquee [animation-direction:reverse] [animation-duration:48s]">
+              {[...rowB, ...rowB].map((it, i) => (
+                <LogoPill key={`${it.name}-${i}`} {...it} />
+              ))}
+            </div>
           </div>
-          <div className="flex w-max animate-marquee [animation-direction:reverse] [animation-duration:48s]">
-            {[...rowB, ...rowB].map((it, i) => (
-              <LogoPill key={`${it.name}-${i}`} {...it} />
-            ))}
-          </div>
-        </div>
+        </Link>
       </Reveal>
+
+      <Container>
+        <Reveal delay={0.1}>
+          <div className="mt-10 text-center">
+            <Link
+              href="/integrations"
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600 transition-colors hover:text-brand-500 dark:text-brand-400"
+            >
+              View all integrations & the open API <ArrowRight size={15} />
+            </Link>
+          </div>
+        </Reveal>
+      </Container>
     </section>
   );
 }

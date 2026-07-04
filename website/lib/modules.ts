@@ -71,7 +71,7 @@ export type Capability = {
 export type ModuleContent = {
   slug: string;
   name: string;
-  category: "Front Office" | "Clinical" | "Revenue Cycle" | "Growth" | "Operations" | "Platform";
+  category: "Front Office" | "Clinical" | "Revenue Cycle" | "Growth" | "Operations" | "Platform" | "AI Platform";
   icon: LucideIcon;
   ai?: boolean;
   tagline: string; // page H1
@@ -1089,8 +1089,328 @@ export const modules: ModuleContent[] = [
     ],
     related: ["analytics-reports", "ai-receptionist", "marketing-crm"],
   },
+
+  /* ------------------------------------------------ Voice AI */
+  {
+    slug: "voice-ai",
+    name: "Voice AI",
+    category: "AI Platform",
+    icon: PhoneCall,
+    ai: true,
+    tagline: "Phone conversations so natural, patients say thank you.",
+    description:
+      "The voice engine behind the DentalOS AI Receptionist: sub-second responses, natural turn-taking with interruptions handled gracefully, automatic language detection, and a voice tuned to your practice's personality — running on carrier-grade telephony with every call recorded and transcribed.",
+    metaDescription:
+      "Dental voice AI: natural phone conversations with sub-second latency, interruption handling, multi-language support, and full call transcripts.",
+    stats: [
+      { value: "<1.2 s", label: "Average response latency" },
+      { value: "24/7", label: "Availability — no hold music, ever" },
+      { value: "100%", label: "Calls recorded, transcribed & scored" },
+    ],
+    capabilities: [
+      {
+        icon: PhoneCall,
+        title: "Natural turn-taking",
+        description:
+          "Patients interrupt, change their minds mid-sentence, and mumble — the voice engine keeps up, just like a great receptionist would.",
+      },
+      {
+        icon: Timer,
+        title: "Sub-second latency",
+        description:
+          "Streaming speech recognition and generation mean responses land in under 1.2 seconds. No awkward robot pauses that make callers hang up.",
+      },
+      {
+        icon: Languages,
+        title: "Automatic language switching",
+        description:
+          "The caller starts in Spanish, the AI answers in Spanish — no menu, no transfer. Transcripts store in both the original language and English.",
+      },
+      {
+        icon: SlidersHorizontal,
+        title: "Your practice's voice",
+        description:
+          "Choose the voice, tone, and greeting. The AI introduces itself with your practice name and follows your scripting preferences for sensitive topics.",
+      },
+      {
+        icon: Workflow,
+        title: "Carrier-grade telephony",
+        description:
+          "Number porting or forwarding, per-location lines, warm transfers to staff, voicemail fallback, and state-law-aware recording disclosures.",
+      },
+      {
+        icon: FileSearch,
+        title: "Every call reviewable",
+        description:
+          "Recording, transcript, structured outcome, and sentiment score for every conversation — searchable in the Calls dashboard for QA and training.",
+      },
+    ],
+    steps: [
+      { title: "Keep your number", description: "Forward or port your existing line — no new hardware." },
+      { title: "Pick voice & rules", description: "Voice, greeting, coverage windows, and transfer rules." },
+      { title: "It answers instantly", description: "First ring, every time, in the caller's language." },
+      { title: "You review anything", description: "Transcripts and outcomes stream into the dashboard live." },
+    ],
+    faqs: [
+      {
+        q: "How human does it actually sound?",
+        a: "Modern neural voices with natural prosody — most callers engage without hesitation. The AI always discloses it's an assistant up front, and satisfaction data shows callers care about speed and outcome far more than who answered.",
+      },
+      {
+        q: "What if two calls come in at once?",
+        a: "The AI answers unlimited concurrent calls. Monday 8 AM surge, lunch hour, post-holiday — no busy signals, no queue.",
+      },
+      {
+        q: "Does it work with my existing phone system?",
+        a: "Yes — keep your current number and either forward to DentalOS or port it fully. Staff can still make and take calls through the integrated softphone with patient screen-pop.",
+      },
+    ],
+    related: ["ai-receptionist", "smart-scheduling", "predictive-analytics"],
+  },
+
+  /* ------------------------------------------------ AI Clinical Assistant */
+  {
+    slug: "ai-clinical-assistant",
+    name: "AI Clinical Assistant",
+    category: "AI Platform",
+    icon: Stethoscope,
+    ai: true,
+    tagline: "A second set of eyes on every chart, every visit, every prescription.",
+    description:
+      "Beyond note-writing: the AI Clinical Assistant watches for what's easy to miss — drug interactions, medical-history risks against planned treatment, chart-note discrepancies, and perio findings that meet treatment criteria — surfacing them at the moment of decision, always as advisories for the provider.",
+    metaDescription:
+      "AI clinical assistant for dentistry: drug interaction alerts, risk detection, treatment suggestions, chart discrepancy checks, and instant patient summaries.",
+    stats: [
+      { value: "100%", label: "Advisory — provider always decides" },
+      { value: "at-decision", label: "Alerts appear when they matter, not after" },
+      { value: "1 click", label: "Full patient summary before any visit" },
+    ],
+    capabilities: [
+      {
+        icon: ShieldAlert,
+        title: "Risk detection against treatment",
+        description:
+          "Bisphosphonates + planned extraction → MRONJ warning. Anticoagulants + surgery → protocol reminder. The chart and the plan are cross-checked continuously.",
+      },
+      {
+        icon: Stethoscope,
+        title: "Drug interaction & allergy alerts",
+        description:
+          "Surfaced at prescribing time and whenever new medications are recorded — combining the e-prescribing network's database with the patient's local allergy list.",
+      },
+      {
+        icon: ListChecks,
+        title: "Treatment suggestions",
+        description:
+          "Perio exam meets SRP criteria → suggested D4341/D4342 by quadrant. Watched caries progressing across images → re-evaluation prompt. Rules plus AI, never auto-added.",
+      },
+      {
+        icon: FileSearch,
+        title: "Chart–note discrepancy checks",
+        description:
+          "The note mentions an extraction the odontogram doesn't show — or vice versa. Caught before signing, not in a payer audit two years later.",
+      },
+      {
+        icon: FileText,
+        title: "Instant patient summaries",
+        description:
+          "One click before a visit or phone call: history, active problems, pending treatment, recent visits — assembled and cited from the chart.",
+      },
+      {
+        icon: Send,
+        title: "Referral letters drafted",
+        description:
+          "Specialist referrals written from the chart with relevant history, findings, and imaging attached — review, sign, send.",
+      },
+    ],
+    steps: [
+      { title: "It reads the chart", description: "History, meds, allergies, perio data, images, and the treatment plan." },
+      { title: "It watches decisions", description: "Prescribing, planning, and charting get real-time cross-checks." },
+      { title: "It speaks up in context", description: "Advisories appear inline at the moment of decision." },
+      { title: "You stay in charge", description: "Accept or dismiss with one tap — every decision logged." },
+    ],
+    faqs: [
+      {
+        q: "Is this making clinical decisions?",
+        a: "No. Every output is an advisory that the provider accepts or dismisses. The system is designed as clinical decision support, with the licensed provider as the final authority — architecturally, not just as policy.",
+      },
+      {
+        q: "Will it spam me with alerts?",
+        a: "Alert fatigue is a design constraint: advisories are tiered by severity, deduplicated per visit, and tunable per provider. Critical safety flags are prominent; everything else stays quiet until you look.",
+      },
+      {
+        q: "Where does the drug interaction data come from?",
+        a: "From the certified e-prescribing network's continuously updated database, combined with the structured allergy and medication lists in the patient's DentalOS chart.",
+      },
+    ],
+    related: ["ai-clinical-notes", "dental-records", "digital-imaging"],
+  },
+
+  /* ------------------------------------------------ Revenue AI */
+  {
+    slug: "revenue-ai",
+    name: "Revenue AI",
+    category: "AI Platform",
+    icon: CircleDollarSign,
+    ai: true,
+    tagline: "Finds the money your practice already earned — and gets it collected.",
+    description:
+      "Revenue AI hunts the leaks: claims paid below contract, completed work never billed, accepted treatment never scheduled, balances aging silently, and insurance benefits expiring unused. Each finding arrives with the action that fixes it.",
+    metaDescription:
+      "Dental revenue AI: underpayment detection, unscheduled treatment recovery, AR prioritization, fee schedule analysis, and year-end benefits campaigns.",
+    stats: [
+      { value: "~9%", label: "Of production the average practice leaks" },
+      { value: "auto", label: "Underpayments flagged on every ERA" },
+      { value: "$-ranked", label: "Work queues sorted by dollar impact" },
+    ],
+    capabilities: [
+      {
+        icon: Landmark,
+        title: "Underpayment detection",
+        description:
+          "Every ERA is compared against your contracted fee schedule per procedure. Payments below contract over your threshold land in a review queue with the variance calculated.",
+      },
+      {
+        icon: Target,
+        title: "Unscheduled treatment recovery",
+        description:
+          "Accepted treatment plans with no appointment attached are surfaced, ranked by value, and fed into follow-up automations and the morning huddle.",
+      },
+      {
+        icon: CircleDollarSign,
+        title: "AR prioritization",
+        description:
+          "Not all overdue balances are equal. The AI ranks collection work by amount, age, payment history, and likelihood — so staff time goes where it pays.",
+      },
+      {
+        icon: PieChart,
+        title: "Payer contract analysis",
+        description:
+          "Effective reimbursement versus contract by payer and procedure, with renegotiate-or-drop scorecards when a contract is quietly costing you.",
+      },
+      {
+        icon: FileBarChart2,
+        title: "Denial pattern detection",
+        description:
+          "Recurring denial reasons by payer and procedure get flagged with the fix — a missing attachment rule here, a coding pattern there — so denials stop repeating.",
+      },
+      {
+        icon: BellRing,
+        title: "Benefits-expiring campaigns",
+        description:
+          "Patients with remaining annual maximums and pending treatment get targeted year-end outreach — the classic Q4 production surge, automated.",
+      },
+    ],
+    steps: [
+      { title: "It audits continuously", description: "Ledger, claims, plans, and fee schedules — checked on every event." },
+      { title: "Findings get ranked", description: "Every leak is quantified in dollars and sorted by impact." },
+      { title: "Actions are attached", description: "Resubmit, follow up, schedule, or campaign — one click from the finding." },
+      { title: "Recovered revenue is tracked", description: "See exactly what Revenue AI found and collected each month." },
+    ],
+    faqs: [
+      {
+        q: "How much does the average practice recover?",
+        a: "Industry data puts leakage around 9% of production. Practices typically see recoveries from underpaid claims and unscheduled treatment within the first month — the in-app ROI report shows your exact number.",
+      },
+      {
+        q: "Does it need my fee schedules loaded?",
+        a: "Underpayment detection is only as good as your contracted fees, so yes — our onboarding team imports your fee schedules, and bulk tools keep them current.",
+      },
+      {
+        q: "Can it write off or adjust anything on its own?",
+        a: "No. Financial actions require human confirmation with the right permission. Revenue AI finds and quantifies; your team decides.",
+      },
+    ],
+    related: ["insurance-automation", "billing-payments", "business-intelligence"],
+  },
+
+  /* ------------------------------------------------ Predictive Analytics */
+  {
+    slug: "predictive-analytics",
+    name: "Predictive Analytics",
+    category: "AI Platform",
+    icon: LineChart,
+    ai: true,
+    tagline: "See next month's problems while they're still this month's choices.",
+    description:
+      "Machine learning models trained on your practice's own patterns predict no-shows before they happen, spot patients about to lapse, forecast revenue 30 and 90 days out, and map demand curves against staffing — turning management from reactive to preventive.",
+    metaDescription:
+      "Predictive analytics for dental practices: no-show prediction, patient churn risk, revenue forecasting, and demand-based staffing insights.",
+    stats: [
+      { value: "per-visit", label: "No-show risk score on every appointment" },
+      { value: "30/90d", label: "Revenue forecast horizons" },
+      { value: "early", label: "Churn flagged before patients are gone" },
+    ],
+    capabilities: [
+      {
+        icon: AlarmClock,
+        title: "No-show prediction",
+        description:
+          "History, lead time, day and hour, appointment type, and confirmation status combine into a risk badge on the calendar — with extra confirmation touches triggered automatically for high-risk visits.",
+      },
+      {
+        icon: CalendarClock,
+        title: "Cancellation-risk-aware scheduling",
+        description:
+          "Smart overbooking suggestions where risk is concentrated, and backfill priorities tuned by who's actually likely to accept an offered slot.",
+      },
+      {
+        icon: Users,
+        title: "Churn early-warning",
+        description:
+          "Declining visit cadence plus overdue recall equals a patient quietly leaving. They surface in a save-list months before they'd normally be noticed — wired into reactivation campaigns.",
+      },
+      {
+        icon: TrendingUp,
+        title: "Revenue forecasting",
+        description:
+          "Scheduled production × your historical completion rates + the recall pipeline = a forecast with confidence ranges, updated daily. Test scenarios like adding a hygiene day.",
+      },
+      {
+        icon: LineChart,
+        title: "Demand & staffing curves",
+        description:
+          "Appointment demand by hour and weekday against staff schedules highlights over- and under-staffed windows before payroll is wasted or patients are turned away.",
+      },
+      {
+        icon: SlidersHorizontal,
+        title: "Transparent models",
+        description:
+          "Every prediction shows its drivers — “3 prior no-shows, booked 6 weeks out, unconfirmed” — so your team trusts the score and knows what to change.",
+      },
+    ],
+    steps: [
+      { title: "Models learn your practice", description: "Trained on your patterns, not generic industry averages." },
+      { title: "Scores appear in the flow", description: "Risk badges on the calendar, save-lists in recall, forecasts on the dashboard." },
+      { title: "Automations respond", description: "High-risk visits get extra touches; churn risks enter campaigns." },
+      { title: "Accuracy compounds", description: "Every outcome feeds back — predictions sharpen month over month." },
+    ],
+    faqs: [
+      {
+        q: "How much history do the models need?",
+        a: "Useful signals appear within weeks of go-live using appointment metadata; migrated historical data (which we import free) lets predictions start strong on day one.",
+      },
+      {
+        q: "Is my data pooled with other practices?",
+        a: "Your models run on your tenant's data. Anonymized cross-practice benchmarking exists as a separate, strictly opt-in feature — it never feeds your predictions without consent.",
+      },
+      {
+        q: "What do I actually do with a high no-show score?",
+        a: "The system acts for you by default: extra confirmation SMS, a call task if unconfirmed, and a standby waitlist match for the slot. You can also enable smart overbooking for chronically high-risk time blocks.",
+      },
+    ],
+    related: ["business-intelligence", "smart-scheduling", "revenue-ai"],
+  },
 ];
 
 export const getModule = (slug: string) => modules.find((m) => m.slug === slug);
 
-export const moduleCategories = ["Front Office", "Clinical", "Revenue Cycle", "Growth", "Operations", "Platform"] as const;
+export const moduleCategories = [
+  "Front Office",
+  "Clinical",
+  "Revenue Cycle",
+  "Growth",
+  "Operations",
+  "Platform",
+  "AI Platform",
+] as const;

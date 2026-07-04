@@ -32,11 +32,12 @@ const columns: { title: string; links: { label: string; href: string }[] }[] = [
     title: "Resources",
     links: [
       { label: "Pricing", href: "/#pricing" },
+      { label: "Security & HIPAA", href: "/security" },
+      { label: "Integrations", href: "/integrations" },
       { label: "FAQ", href: "/#faq" },
       { label: "Testimonials", href: "/#testimonials" },
-      { label: "Blog", href: "#" },
-      { label: "Help Center", href: "#" },
-      { label: "Switching Guide", href: "#" },
+      { label: "Solutions: No-Shows", href: "/solutions/no-shows" },
+      { label: "Solutions: Missed Calls", href: "/solutions/missed-calls" },
     ],
   },
   {

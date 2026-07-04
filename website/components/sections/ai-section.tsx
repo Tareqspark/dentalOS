@@ -1,7 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import {
+  ArrowRight,
   Bot,
   BrainCircuit,
   CalendarClock,
@@ -15,14 +17,14 @@ import { Container } from "../ui/primitives";
 import { Reveal, Stagger, StaggerItem } from "../ui/reveal";
 
 const capabilities = [
-  { icon: Mic, title: "Voice AI", description: "Natural phone conversations that book, reschedule, and triage." },
-  { icon: Bot, title: "AI Receptionist", description: "Every call answered on the first ring, 24/7/365." },
-  { icon: FileText, title: "AI Documentation", description: "SOAP notes and CDT codes drafted from the visit itself." },
-  { icon: BrainCircuit, title: "Clinical Assistant", description: "Risk flags, drug interactions, and treatment suggestions." },
-  { icon: TrendingUp, title: "Revenue AI", description: "Underpaid claims caught, unscheduled treatment surfaced." },
-  { icon: LineChart, title: "Predictive Analytics", description: "No-shows and cancellations predicted before they happen." },
-  { icon: CalendarClock, title: "Smart Scheduling", description: "Cancellations refilled from the waitlist automatically." },
-  { icon: Sparkles, title: "Business Intelligence", description: "A daily briefing that reads your practice for you." },
+  { icon: Mic, title: "Voice AI", description: "Natural phone conversations that book, reschedule, and triage.", href: "/features/voice-ai" },
+  { icon: Bot, title: "AI Receptionist", description: "Every call answered on the first ring, 24/7/365.", href: "/features/ai-receptionist" },
+  { icon: FileText, title: "AI Documentation", description: "SOAP notes and CDT codes drafted from the visit itself.", href: "/features/ai-clinical-notes" },
+  { icon: BrainCircuit, title: "Clinical Assistant", description: "Risk flags, drug interactions, and treatment suggestions.", href: "/features/ai-clinical-assistant" },
+  { icon: TrendingUp, title: "Revenue AI", description: "Underpaid claims caught, unscheduled treatment surfaced.", href: "/features/revenue-ai" },
+  { icon: LineChart, title: "Predictive Analytics", description: "No-shows and cancellations predicted before they happen.", href: "/features/predictive-analytics" },
+  { icon: CalendarClock, title: "Smart Scheduling", description: "Cancellations refilled from the waitlist automatically.", href: "/features/smart-scheduling" },
+  { icon: Sparkles, title: "Business Intelligence", description: "A daily briefing that reads your practice for you.", href: "/features/business-intelligence" },
 ];
 
 /** Concentric animated orb representing the AI engine. */
@@ -79,15 +81,20 @@ export function AISection() {
         </div>
 
         <Stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {capabilities.map(({ icon: Icon, title, description }) => (
+          {capabilities.map(({ icon: Icon, title, description, href }) => (
             <StaggerItem key={title}>
-              <div className="group h-full rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-ai-400/50 hover:bg-white/10">
-                <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-brand-500/80 to-ai-500/80 text-white">
-                  <Icon size={18} />
-                </span>
-                <h3 className="mt-4 font-semibold">{title}</h3>
-                <p className="mt-1.5 text-sm leading-relaxed text-white/60">{description}</p>
-              </div>
+              <Link href={href} className="block h-full">
+                <div className="group flex h-full flex-col rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-ai-400/50 hover:bg-white/10">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-brand-500/80 to-ai-500/80 text-white">
+                    <Icon size={18} />
+                  </span>
+                  <h3 className="mt-4 font-semibold">{title}</h3>
+                  <p className="mt-1.5 flex-1 text-sm leading-relaxed text-white/60">{description}</p>
+                  <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-ai-300 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                    Explore <ArrowRight size={14} className="transition-transform group-hover:translate-x-0.5" />
+                  </span>
+                </div>
+              </Link>
             </StaggerItem>
           ))}
         </Stagger>
